@@ -1,0 +1,149 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+
+  <h2 class="text-capitalize">Welcome {{providerName}}</h2>
+  <mat-tab-group>
+    <mat-tab label="Courses">
+      <!--   Course  Display    -->
+      <mat-card style="text-align:center;" *ngIf="listLength == 0">
+        <h2> No Course found...Please Add Course </h2>
+
+      </mat-card>
+      <mat-card style="text-align:center;" *ngIf="listLength != 0">
+        <table class="table table-stripped table-condensed">
+
+          <thead>
+            <tr>
+              <!-- <th>Course Id</th> -->
+              <th>Course Name</th>
+              <th>Course Price</th>
+              <th>Course Duration</th>
+              <!--  <th>Course Description</th> -->
+
+
+              <th>Course Status</th>
+            </tr>
+          </thead>
+          <tbody>
+
+
+            <tr *ngFor="let course of listOfCourse;let i=index">
+              <!-- <td>{{course.courseId}}</td>-->
+              <td>{{course.courseName}}</td>
+              <td>{{course.coursePrice}}</td>
+              <td>{{course.courseDuration}}</td>
+              <!-- <td>{{course.courseDescription}}</td> -->
+              <td *ngIf="course.status">
+                <i class="fa fa-check-circle"  aria-hidden="true"  style="color:green"></i>
+              </td>
+              <td *ngIf="!course.status">
+                <i class="fa fa-times-circle-o"  aria-hidden="true"  style="color:red"></i>
+              </td>
+
+              <!--<td><button mat-button color="primary" (click)="getDetilsOfCoures(course.courseId,i)"> Get Details </button></td>-->
+            </tr>
+          </tbody>
+        </table>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Add Course">
+      <!----Add Course---->
+      <!--<div id="addCourse" class="container">-->
+      <!--<div class="row">-->
+      <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12" id="row">
+        <mat-card id="form">
+          <form [formGroup]="rForm" (ngSubmit)="submitForm()">
+            <div class="example-container">
+              <mat-form-field>
+                <mat-select placeholder="Select Category*" id="cat" name="cat" formControlName="cat">
+                  <mat-option value="Web Development">Web Development</mat-option>
+                  <mat-option value="Game Development">Game Development</mat-option>
+                  <mat-option value="Database">Database</mat-option>
+                  <mat-option value="Software Testing">Software Testing</mat-option>
+                  <mat-option value="Hardware">Hardware</mat-option>
+                  <mat-option value="Operating System">Operating System</mat-option>
+                  <mat-option value="Network and Security">Network and Security</mat-option>
+                  <mat-option value="Finances">Finances</mat-option>
+                  <mat-option value="Entrepreneurship">Entrepreneurship</mat-option>
+                  <mat-option value="Mangement">Management</mat-option>
+                  <mat-option value="Sales">Sales</mat-option>
+                  <mat-option value="Career Development">Career Development</mat-option>
+                  <mat-option value="Leadership">Leadership</mat-option>
+                  <mat-option value="Personal Finances">Personal Finances</mat-option>
+                  <!--<mat-option value="Personal Transformation">Personal Transformation</mat-option>-->
+                  <mat-option value="Digital Marketing">Digital Marketing</mat-option>
+                  <mat-option value="Public Relations">Public Relations</mat-option>
+                  <mat-option value="Social Media Marketing">Social Media Marketing</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!rForm.controls['cat'].valid && rForm.controls['cat'].touched && rForm.controls['cat'].errors.required">Category is required</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Select difficulty level*" id="diff" name="diff" formControlName="diff">
+                  <mat-option value="beginner">Beginner</mat-option>
+                  <mat-option value="intermediate">Intermediate</mat-option>
+                  <mat-option value="expert">Expert</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!rForm.controls['diff'].valid && rForm.controls['diff'].touched && rForm.controls['diff'].errors.required">Difficulty Level is required</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Enter Course name*" autocomplete="off" id="name" name="name" formControlName="name">
+                <mat-error *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched && rForm.controls['name'].errors.required">Course name is required</mat-error>
+                <mat-error *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched && rForm.controls['name'].errors.maxlength">Course name must be maximum 25 characters</mat-error>
+                <mat-error *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched && rForm.controls['name'].errors.pattern">Enter valid course name</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Enter Course Price*" autocomplete="off" id="price" name="price" formControlName="price">
+                <mat-error *ngIf="!rForm.controls['price'].valid && rForm.controls['price'].touched && rForm.controls['price'].errors.required">Course price is required</mat-error>
+                <mat-error *ngIf="!rForm.controls['price'].valid && rForm.controls['price'].touched && rForm.controls['price'].errors.pattern">Enter valid course price</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Enter Course Duration*" autocomplete="off" id="dur" name="dur" formControlName="dur">
+                <mat-error *ngIf="!rForm.controls['dur'].valid && rForm.controls['dur'].touched && rForm.controls['dur'].errors.required">Course Duration is required</mat-error>
+                <mat-error *ngIf="!rForm.controls['dur'].valid && rForm.controls['dur'].touched && rForm.controls['dur'].errors.pattern">Enter valid course duration</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Enter Number of Lectures*" autocomplete="off" id="lect" name="lect" formControlName="lect">
+                <mat-error *ngIf="!rForm.controls['lect'].valid && rForm.controls['lect'].touched && rForm.controls['lect'].errors.required">Number of lectures is required</mat-error>
+                <mat-error *ngIf="!rForm.controls['lect'].valid && rForm.controls['lect'].touched && rForm.controls['lect'].errors.pattern">Enter valid number of lectures</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Enter Course Image URL*" autocomplete="off" id="img" name="img" formControlName="img">
+                <mat-error *ngIf="!rForm.controls['img'].valid && rForm.controls['img'].touched && rForm.controls['img'].errors.required">Image url is required</mat-error>
+                <mat-error *ngIf="!rForm.controls['img'].valid && rForm.controls['img'].touched && rForm.controls['img'].errors.pattern">Enter valid image url</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Enter Course URL*" autocomplete="off" id="url" name="url" formControlName="url">
+                <mat-error *ngIf="!rForm.controls['url'].valid && rForm.controls['url'].touched && rForm.controls['url'].errors.required">Course url is required</mat-error>
+                <mat-error *ngIf="!rForm.controls['url'].valid && rForm.controls['url'].touched && rForm.controls['url'].errors.pattern">Enter valid course url</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <textarea matInput placeholder="Enter Course Description*" matTextareaAutosize matAutosizeMinRows="4" matAutosizeMaxRows="10"
+                  autocomplete="off" id="desc" name="desc" formControlName="desc"></textarea>
+                <mat-error *ngIf="!rForm.controls['desc'].valid && rForm.controls['desc'].touched && rForm.controls['desc'].errors.required">Course description is required</mat-error>
+                <mat-error *ngIf="!rForm.controls['desc'].valid && rForm.controls['desc'].touched && rForm.controls['desc'].errors.maxlength">Course description must be maximum 1000 characters</mat-error>
+              </mat-form-field>
+              <div id="submitBtn">
+                <button mat-raised-button color="primary" [disabled]="!rForm.valid">Add Course</button>
+              </div>
+            </div>
+          </form>
+        </mat-card>
+        <!--</div>-->
+      </div>
+      <!--</div>-->
+
+      <!-- --Add Course Form End---------- -->
+
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+</div>
+

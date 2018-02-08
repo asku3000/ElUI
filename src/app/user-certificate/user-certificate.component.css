@@ -1,0 +1,36 @@
+@page { size: A4 landscape }
+
+#cert{
+    margin-top: 1.5%;
+    background-image:url('/assets/images/background.jpg');
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    height: 550px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#error{
+    margin-top: 10%;
+    border:1px solid inherit;
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#CertificateTitle{
+    font-size:40px; 
+    font-weight:bold;
+    margin-top: 5%;
+    font-family:Snell Roundhand, cursive;
+}
+#homeButton{
+    text-align:center;
+    margin-top:8px;
+}
+h1{
+    font-size:90px; 
+    color:blue;
+}
+@media only screen and (max-width: 768px) {
+    
+     #error{
+         margin-top:30%;
+     }
+}

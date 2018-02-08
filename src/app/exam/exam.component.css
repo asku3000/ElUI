@@ -1,0 +1,173 @@
+.container{
+    margin-top:5%;
+    text-align: center;
+}
+h2{
+    font-weight: bold;
+    font-size: 170%;
+    display: inline;
+    padding: 10px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.btn{
+    font-size:130%;
+}
+h4{
+    display: inline;
+    font-size: 150%;
+}
+.row{
+    padding: 10px;
+}
+#options,#question{
+    text-align: left;
+}
+#quesPanel,#main{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.copyright{
+    padding: 10px;
+}
+.funkyradio div {
+    clear: both;
+    /*margin: 0 50px;*/
+    overflow: hidden;
+}
+.funkyradio label {
+    /*min-width: 400px;*/
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #D1D3D4;
+    font-weight: normal;
+    font-size:16px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.funkyradio input[type="radio"]:empty {
+    display: none;
+}
+.funkyradio input[type="radio"]:empty ~ label {
+    position: relative;
+    line-height: 1.5em;
+    /*text-indent: 1.25em;*/
+    margin-top: 1em;
+    cursor: pointer;
+    padding: 5px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.funkyradio input[type="radio"]:empty ~ label:before {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    content:'';
+    width: 2.5em;
+    background:transparent;
+    border-radius: 3px 0 0 3px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label {
+    color: #888;
+    background-color: #ccc;
+}
+.funkyradio input[type="radio"]:checked ~ label {
+    color: #fff;
+    background-color: #337ab7;
+    border: 3px solid #fff;
+}
+.checkbox {
+  padding-left: 20px; }
+  .checkbox label {
+    display: inline-block;
+    position: relative;
+    padding-left: 5px; }
+    .checkbox label::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      left: 0;
+      margin-left: -20px;
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+      background-color: #fff;
+      -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+      -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+      transition: border 0.15s ease-in-out, color 0.15s ease-in-out; }
+    .checkbox label::after {
+      display: inline-block;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 0;
+      top: 0;
+      margin-left: -20px;
+      padding-left: 3px;
+      padding-top: 1px;
+      font-size: 11px;
+      color: #555555; }
+  .checkbox input[type="checkbox"] {
+    opacity: 0; }
+    .checkbox input[type="checkbox"]:focus + label::before {
+      outline: thin dotted;
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px; }
+    .checkbox input[type="checkbox"]:checked + label::after {
+      font-family: 'FontAwesome';
+      content: "\f00c"; }
+    .checkbox input[type="checkbox"]:disabled + label {
+      opacity: 0.65; }
+      .checkbox input[type="checkbox"]:disabled + label::before {
+        background-color: #eeeeee;
+        cursor: not-allowed; }
+  .checkbox.checkbox-circle label::before {
+    border-radius: 50%; }
+  .checkbox.checkbox-inline {
+    margin-top: 0; }
+
+.checkbox-primary input[type="checkbox"]:checked + label::before {
+  background-color: #428bca;
+  border-color: #428bca; 
+  }
+.checkbox-primary input[type="checkbox"]:checked + label::after {
+  color: #fff; 
+  }
+  .modal-header-success {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #5cb85c;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-danger {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #d9534f;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-dialog,.modal-footer{
+    text-align: center;
+}
+.modal{
+    z-index: 9999;
+    margin-top:14%;
+}
+

@@ -1,0 +1,21 @@
+
+h2,h4,h3{
+
+    color:blue;
+}
+mat-tab-label{
+    color:blue;
+}
+th{
+    text-align: center;
+}
+#row{
+    text-align: center;
+}
+.example-container{
+    display: flex;
+    padding-left: 20%;
+    padding-right: 20%;
+    flex-direction: column;
+
+}

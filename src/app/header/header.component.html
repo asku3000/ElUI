@@ -1,0 +1,139 @@
+
+<div class="row" style="position:fixed;z-index:9999;top:0px;width:104%">
+    <div class="col-sm-12 col-xs-12 col-md-12" style="background: 1E88E5;">
+    </div>
+    <div class="myNavBar" >
+        <nav class="navbar navbar-default" style="background: white;">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="false">
+        <span class="sr-only" >Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                    <div style="margin-left:100px;">
+                        <a class="navbar-brand" href="#"><img src="../../assets/images/FinalLogo1.jpg" alt="Dispute Bills"></a>
+                    </div>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" *ngIf="!isLoggedIn">
+                    <ul class="nav navbar-nav navbar-right">
+                        <!--<li class="active">-->
+                        <li>
+                            <a [routerLink]="['/home']" (click)="collapseNav()">
+                                <p class="text-primary">Home</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/about']" (click)="collapseNav()">
+                                <p class="text-primary">About</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/contact']" (click)="collapseNav()">
+                                <p class="text-primary">Contact</p>
+                            </a>
+                        </li>
+                        <li >
+
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="margin-right:20px" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="text-primary"*ngIf="!userService.isLoggedIn()">LogIn/SignUp </span>
+                                <span class="text-primary"*ngIf="userService.isLoggedIn()" >Welcome {{title}}</span><span class="caret"></span></a>
+                            <ul class="dropdown-menu" id="welcome" role="menu">
+
+
+
+                                <li *ngIf="!userService.isLoggedIn()" class="pad-left" (click)="collapseNav()">
+                                    <a href="#" [routerLink]="['/login']" (click)="collapseNav()">
+                                        <p class="text-primary">Login </p>
+                                    </a>
+                                </li>
+                                 
+                                <li *ngIf="userService.isLoggedIn()" class="pad-left">
+                                    <a href="#" [routerLink]="['/dashboarduser']" (click)="collapseNav()">
+                                        <p class="text-primary">Profile</p>
+                                    </a>
+                                </li>
+                                <li *ngIf="userService.isLoggedIn()" class="pad-left">
+                                    <a  (click)="logout()">
+                                        <p class="text-primary">Logout</p>
+                                    </a>
+                                </li>
+                              
+                                <li *ngIf="!userService.isLoggedIn()" class="pad-left">
+                                    <a [routerLink]="['/signup']" (click)="collapseNav()">
+                                        <p class="text-primary">Sign Up</p>
+                                    </a>
+                                </li>
+
+                                <li class="divider" *ngIf="!userService.isLoggedIn()||userService.userRole==='user'" class="pad-left"></li>
+
+                                <!--<li *ngIf="!userService.isLoggedIn()" class="pad-left">
+                                    <a href="#" (click)="collapseNav()">
+                                        <p class="text-primary">Provider SignUp</p>
+                                    </a>
+                                </li>-->
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left" *ngIf="!userService.isLoggedIn() || userService.userRole=='user'">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Development <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li *ngFor="let item of developmentCategories, let i = index" [routerLink]="['/category/',item]"><a  (click)="clicekd(i)">{{item}}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left" *ngIf="userService.userRole==='admin'&& userService.isLoggedIn()" >
+                        <li>
+                            <a [routerLink]="['./mydashboardadmin/users']">Course</a>
+                        </li>
+                    </ul>
+                   
+                    <ul class="nav navbar-nav navbar-left" *ngIf="!userService.isLoggedIn()||userService.userRole==='user'">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Business <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li *ngFor="let item of businessCategories, let i = index" [routerLink]="['/category/',item]"><a (click)="clicekd(i)">{{item}}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left" *ngIf="userService.userRole==='admin'&& userService.isLoggedIn()" >
+                        <li>
+                            <a [routerLink]="['./mydashboardadmin/graphs']">Graphs</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left" *ngIf="!userService.isLoggedIn()||userService.userRole==='user'">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Personal Development <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li *ngFor="let item of personalDevelopmentCategories, let i = index" [routerLink]="['/category/',item]" ><a (click)="clicekd(i)">{{item}}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left" *ngIf="!userService.isLoggedIn()||userService.userRole==='user'">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Marketing <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li *ngFor="let item of marketingCategories, let i = index" [routerLink]="['/category/',item]"><a (click)="clicekd(i)">{{item}}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left" *ngIf="!userService.isLoggedIn()||userService.userRole==='user'">
+                        <li class="dropdown">
+                            <a [routerLink]="['/certificatesearch']" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false" (click)="collapseNav()">Certificates</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            <div *ngIf="!!isLoggedIn"><p>hello</p></div>
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </div>
+</div>

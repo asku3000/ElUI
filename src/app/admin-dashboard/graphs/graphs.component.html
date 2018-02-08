@@ -1,0 +1,49 @@
+<div class="col-sm-12 main " >
+  <div class="row">
+    <div class="col-sm-1">
+            
+          </div>
+          
+          <div style="display: block;margin:10px;padding:20px;" class="col-sm-5 panel">
+            <div class="col-sm-12">
+            <canvas baseChart
+                    [data]="pieChartData"
+                    [labels]="pieChartLabels"
+                    
+                    [chartType]="pieChartType"
+                    [colors]="chartColors"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+          
+          </div>
+          </div>
+          
+                      <div style="display: block;margin:10px;padding:20px; " class="col-sm-5 panel" >
+                        <div class="col-sm-12 " >
+                        <canvas class="base" baseChart
+                                [data]="pieChartData1"
+                                [labels]="pieChartLabels1"
+                                [chartType]="pieChartType1"
+                                [colors]="chartColors"
+                                (chartHover)="chartHovered($event)"
+                                (chartClick)="chartClicked($event)"></canvas>
+                        </div>
+                      </div>
+                      <div class="col-sm-1">
+            
+          </div>
+  </div>
+                               <div class="row col-sm-12 bgraph">
+                                  <div class="col-sm-6 " style="display: block">
+                                  <canvas baseChart
+                                              [datasets]="barChartData"
+                                              [labels]="barChartLabels"
+                                              [options]="barChartOptions"
+                                              [legend]="barChartLegend"
+                                              [chartType]="barChartType"
+                                              
+                                              (chartHover)="bardiagramHovered($event)"
+                                              (chartClick)="bardiagramClicked($event)"></canvas>
+                                    </div>
+                               </div>
+</div>

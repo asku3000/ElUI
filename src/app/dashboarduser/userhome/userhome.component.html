@@ -1,0 +1,128 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12">
+      <mat-card>
+        <div class="img" style="text-align:center;">
+          <img src="./assets/images/userdashboard.jpg" class="img-circle" alt="User" width="304" height="236">
+          <h3 class="text-capitalize">{{name}}</h3>
+          <button mat-raised-button color="primary" *ngIf="role=='provider'" (click)="navigateToDash()">View/Add Course</button>
+        </div>
+        <mat-tab-group>
+          <mat-icon matPrefix><i class="material-icons">&#xE851;</i></mat-icon>
+          <mat-tab label="Personal Details">
+            <mat-card>
+
+              <p>Contact Details</p>
+              <!--       -->
+              <div class="table-responsive">
+                <table class="table table-condensed">
+                  <tbody>
+                    <tr>
+                      <td>Email</td>
+                      <td>{{email}}</td>
+
+                    </tr>
+                    <tr>
+                      <td>Contact</td>
+                      <td *ngIf="contact.length!=0">{{contact}}</td>
+                      <td *ngIf="contact.length==0">Not Available</td>
+                    </tr>
+                    <tr *ngIf="role ==='provider'">
+                      <td>Website</td>
+                      <td>{{plink}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!---           dd          -->
+            </mat-card>
+          </mat-tab>
+          <mat-tab label="Certification Details" *ngIf="role ==='user'">
+            <mat-card>
+              <!--   Certificate Display    -->
+              <mat-card style="text-align:center;" *ngIf="listLength == 0">
+                <h2> No Certification found...Please take Certification-Test </h2>
+                <button mat-raised-button color="primary" (click)="takeTest()"> Take Test </button>
+              </mat-card>
+              <mat-card style="text-align:center;" *ngIf="listLength != 0">
+                <table class="table table-stripped">
+                  <thead>
+                    <tr>
+                      <th>Certificate Name</th>
+                      <th>Score</th>
+                      <th>Certificate Issued</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let cert of listOfCertificate">
+                      <td>{{cert.certificateName}}</td>
+                      <td>{{cert.score}}</td>
+                      <td *ngIf="cert.status">
+                        <i class="fa fa-check-circle"  aria-hidden="true"  style="color:green"></i>
+                      </td>
+                      <td *ngIf="!cert.status">
+                        <i class="fa fa-times-circle-o"  aria-hidden="true"  style="color:red"></i>
+                      </td>
+
+                    </tr>
+                  </tbody>
+                </table>
+              </mat-card>
+
+              <!--   Certificate Display    -->
+            </mat-card>
+          </mat-tab>
+          <mat-tab label="Change Password" id="name">
+            <mat-card style="text-align:center;">
+              <form [formGroup]="rForm" (ngSubmit)="submitForm()">
+                <div class="example-container">
+                  <mat-form-field>
+                    <input matInput placeholder="Enter current password*" autocomplete="off" [type]="phide ? 'password' : 'text'" formControlName="pass"
+                      id="pass" name="pass">
+                    <mat-icon matSuffix (click)="phide = !phide">{{phide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    <mat-hint align="start">password must be of 8-10 characters</mat-hint>
+                    <mat-error *ngIf="!rForm.controls['pass'].valid && rForm.controls['pass'].touched && rForm.controls['pass'].errors.required">Password is required</mat-error>
+                    <mat-error *ngIf="!rForm.controls['pass'].valid && rForm.controls['pass'].touched && rForm.controls['pass'].errors.minlength">Password should be minimum 8 character long</mat-error>
+                    <mat-error *ngIf="!rForm.controls['pass'].valid && rForm.controls['pass'].touched && rForm.controls['pass'].errors.maxlength">Password should be minimum 16 character long</mat-error>
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field>
+                   <input matInput placeholder="Enter New password*" autocomplete="off" [type]="nhide ? 'password' : 'text'"
+                      formControlName="newpass" id="newpass" name="newpass">
+                      <mat-icon matSuffix (click)="nhide = !nhide">{{nhide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                      <mat-hint align="start">password must be of 8-10 characters</mat-hint>
+                      <mat-error *ngIf="!rForm.controls['newpass'].valid && rForm.controls['newpass'].touched && rForm.controls['newpass'].errors.required">Password is required</mat-error>
+                      <mat-error *ngIf="!rForm.controls['newpass'].valid && rForm.controls['newpass'].touched && rForm.controls['newpass'].errors.minlength">Password should be minimum 8 character long</mat-error>
+                      <mat-error *ngIf="!rForm.controls['newpass'].valid && rForm.controls['newpass'].touched && rForm.controls['newpass'].errors.maxlength">Password should be minimum 16 character long</mat-error>
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field>
+                    <input matInput placeholder="Confirm New password*" autocomplete="off" [type]="cphide ? 'password' : 'text'"
+                      formControlName="confirmPass" id="confirmPass" name="confirmPass">
+                      <mat-icon matSuffix (click)="cphide = !cphide">{{cphide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                      <mat-error *ngIf="rForm.invalid && !rForm.controls['confirmPass'].valid && rForm.controls['confirmPass'].touched && rForm.controls['confirmPass'].errors.required">Password is required</mat-error>
+                      <mat-error *ngIf="rForm.invalid && !rForm.controls['confirmPass'].valid && rForm.controls['confirmPass'].touched && rForm.controls['confirmPass'].errors.minlength">Password should be minimum 8 character long</mat-error>
+                      <mat-error *ngIf="rForm.invalid && !rForm.controls['confirmPass'].valid && rForm.controls['confirmPass'].touched && rForm.controls['confirmPass'].errors.maxlength">Password should be minimum 16 character long</mat-error>
+                  </mat-form-field>
+
+                  <mat-error *ngIf="rForm.controls['confirmPass'].valid && rForm.invalid && rForm.errors?.passwordsShouldMatch">Password do not match</mat-error>
+
+                  <div id="submitBtn">
+                    <button mat-raised-button color="primary" [disabled]="!rForm.valid">Change Password</button>
+                  </div>
+                </div>
+              </form>
+            </mat-card>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<br>
+<br>
+<br>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2 main">
+
+			<div class="col-sm-6 left-side">
+				<h1 style="font-family: 'Titillium Web', sans-serif;">Login</h1>
+
+				<form name="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+
+					<div class="form1">
+						<div class="form1-group form-group" [ngClass]="{
+								'has-danger': username.invalid && (username.dirty || username.touched),
+								'has-success': username.valid && (username.dirty || username.touched)
+ 							  }">
+							<label for="username ">Your email</label>
+
+							<input type="text" id="form2" class="form-control" name="username" formControlName="username" placeholder="enter your email"  required>
+							 <div *ngIf="username.pending" class="">Checking for uniqueness....</div>
+							 
+                             <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
+										<div *ngIf="username.errors.required">Email is required</div>
+										<div *ngIf="username.errors.email">This Should be a email type</div>
+										<div *ngIf="username.errors.cannotContainSpace">Spaces are not allowed</div>
+										<div *ngIf="username.errors.pattern" >enter correct email </div>
+										<div *ngIf="username.errors.shouldBeUnique">Username Doesn't Exists</div>
+								
+								<!--<div *ngIf="username.errors.validEmail">Must be an email type</div>-->
+								<!--<div *ngIf="error">Username Doesn't exists</div>-->
+					         </div>
+								<!--<div *ngIf="error" class="alert alert-danger">Username Doesn't exists</div>-->
+                      </div>
+
+
+	<div class="form1-group form-group">
+	<label for="password">Your password</label>
+     <input type="password"  id="form4" class="form-control" name="password" autocomplete="off" formControlName="password" placeholder="enter password" pattern="/^[A-Za-z]\w{7,14}$/" maxlength=16 required>
+							 <div *ngIf="password.pattern" class="alert alert-danger" >length is not matching </div>
+							 <div *ngIf="password.pending" class="alert alert-danger" >Checking for uniqueness....</div>
+            			     <!--<div class="alert alert-danger" *ngIf="password.touched ">invalid</div>-->
+							
+							
+							 
+							<div *ngIf="password.errors.cannotContainSpace" class="alert alert-danger">Spaces are not allowed</div>
+							<div *ngIf="password.errors.shouldBeUnique" class="alert alert-danger" >Password Doesn't Exists</div>
+								<div *ngIf="password.errors.minlength" class="alert alert-danger">Password must be minimum of 8 characters long  </div>
+								<div *ngIf="password.errors.maxlength" class="alert alert-danger">Password must be maximum of 16 characters  </div>
+								<div *ngIf="error" class="alert alert-danger" >Password Doesn't exists</div>
+								 <div *ngIf="password.errors.required&&password.touched" class="alert alert-danger">*User Password is required</div>
+                        	</div>
+
+						
+
+
+						<div class="text-xs-center form-group">
+							<input type="submit" value="Login" class="btn btn-deep-purple">
+							<input type="submit" value="Sign up" class="btn btn-deep-purple" [routerLink]="['/signup']" >
+						</div>
+						<a [routerLink]="['/forgotPassword']">Forgot Password</a>
+					</div>
+				</form>
+				<div *ngIf="checked" class="invalid" center>
+					<p>Invalid email or password</p>
+				</div>
+				<div *ngIf="checkedStatus" class="invalid" center>
+					<p>Account is deactivated</p>
+				</div>
+
+			</div>
+              <div class="col-sm-6 right-side">
+				<div class="abc mob1">
+					<h2 class="mob0">Hello<br>Learners</h2>
+
+					<h2 class="mob0">Welcome to EduCentral</h2>
+
+					<div class="col-md-12">
+						<input type="button" class="fb" href="#" target="_blank" value="Login With Facebook" (click)="signInWithFB()">
+
+						<input type="button" class="tw" href="#" target="_blank" value="Login With Google" (click)="signInWithGoogle()">
+					</div>
+				</div>
+				<!--col-sm-6-->
+			</div>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,53 @@
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<div class="form-gap"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" class="panel panel-default">
+        <div class="panel-body">
+          <div class="text-center">
+
+            <h2 class="text-center">OTP</h2>
+            <p>Enter the OTP you received in email</p>
+            <div class="panel-body">
+
+              <form  [formGroup]="myform" id="register-form" (ngSubmit)="checkOTP()"  class="form" method="post">
+                <!-- <input id="user_email" formControlName="user_email" name="user_email" [(value)]='user.user_email' class="form-control" type="hidden" readonly> -->
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class=""></i></span>
+                    <input formControlName="user_otp" required id="user_otp" name="user_otp" placeholder="enter OTP" class="form-control" type="password">
+                  </div>
+                   <div class="alert alert-danger" *ngIf="user_otp.touched && user_otp.invalid">
+                    <div *ngIf="user_otp.errors.required">Otp is required</div>
+                    <div *ngIf="user_otp.errors.minlength">OTP minimum length is 4</div>
+                    <div *ngIf="user_otp.errors.maxlength">OTP maximum length is 4</div>
+                    <div *ngIf="user_otp.errors.pattern">Only Numbers</div>
+                    
+                     </div>
+                     <div *ngIf="error" class="alert alert-danger">OTP is Wrong</div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-lg btn-primary btn-block" [disabled]="!myform.valid" type="submit" >Verify OTP</button>
+                </div>
+                <div class="form-group">
+                  <button name="resendOtp" (click)="resendOTP()" class="btn btn-sm btn-warning btn-block">Resend OTP</button>
+                </div>
+                <div class="form-group">
+                  <a href="#" class="text-primary">Sign In</a>
+
+                </div>
+               
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

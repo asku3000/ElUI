@@ -1,0 +1,65 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div *ngIf="!loginStatus">
+  <div class="container">
+  <mat-card style="text-align:center;">
+    <h2>Please Login to take the test</h2>
+    <button mat-raised-button color="primary" (click)="navigateToLogIn()">Login Here</button>
+  </mat-card>
+  </div>
+</div>
+<div *ngIf="loginStatus"> 
+<div class="container">
+  <div class="container" *ngIf="certificatesLength == 0">
+    <div class="container" *ngIf="certificates == null">
+      <img height="90" width="120" src="/assets/images/Loading_icon.gif">
+    </div>
+    <div class="container" *ngIf="certificates != null">
+      <h2>Failed to load!!! Try Again!! </h2>
+    </div>
+  </div>
+  <div *ngIf="certificatesLength != 0">
+    <div id="testHeading">
+      <h1>{{getCertificateName()}}</h1>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5><b>Test Instructions</b></h5>
+      </div>
+      <div class="panel-body">
+        <div id="testInstruction">
+          <p>
+            Welcome to EduCentral Test platform. Take this test to get certified on {{certificateName}}. Before taking the test please
+            go through following instructions.
+          </p>
+          <div align="left">
+            <ul>
+              <li>The test consists of 10 Questions.</li>
+              <li>All Questions are mandatory.</li>
+              <li>Each question carry 1 mark.</li>
+              <li>There is no negative marking.</li>
+              <li>Do not press back while taking test.</li>
+              <li>After completion of test check the check box <b>I have completed the Test</b> to enable <b>Submit</b> button.</li>
+              <li>After checking the check box click on <b>Submit Test</b> to submit your response.</li>
+              <li>You have to secure minimum 60% to get the certificate.</li>
+            </ul>
+          </div>
+          <p>
+            After you read all the instructions click on <b>Start Test</b> to take the test.
+          </p>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <a class="btn btn-primary" role="button" (click)="navigateToTest()">Start Test</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+<br>
+<br>

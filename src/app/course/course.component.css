@@ -1,0 +1,112 @@
+.box-shadow{
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#courseDesc{
+    text-align: justify;
+    text-justify: inter-word;
+}
+.container-fluid{
+max-width: 100%;
+        overflow-x: hidden;}
+.fa-star{
+    color:#FFB300;
+}
+
+.Mytext {
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            padding: 5px;
+            text-overflow: ellipsis;
+            /*(...)*/
+        }
+.Mytext:hover {
+         max-width: 100%;
+            white-space: unset;
+            overflow: unset;
+            padding: unset;
+            text-overflow:unset;
+            text-align: justify;
+    text-justify: inter-word;
+            /*(...)*/
+        }
+
+.circle{
+    background: #7986CB;
+    color: #fff;
+    padding: 5px 20px;
+    border-radius: 50%;
+    font-size: 35px;
+}
+
+  .modal-header-success {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #2980B9;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-danger {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #d9534f;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-dialog,.modal-footer{
+    text-align: center;
+}
+.modal{
+    z-index:9999;
+    margin-top:9%;
+}
+
+@media only screen and (max-width: 765px){
+    .modal{
+    z-index:9999;
+    margin-top:13%;
+}
+}
+
+@media only screen and (max-width: 654px){
+    .modal{
+    z-index:9999;
+    margin-top:13%;
+}
+}
+@media only screen and (max-width: 360px){
+    .modal{
+    z-index:9999;
+    margin-top:13%;
+}
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.input-xlarge{
+	width: 100%;
+	padding: 9px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	border-radius: 20px;
+}

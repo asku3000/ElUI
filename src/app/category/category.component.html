@@ -1,0 +1,35 @@
+<div class="container" >
+  <div class="row">
+  <br><br><br><br><br><br>
+
+<div class="row" *ngIf="isloading">
+      <mat-spinner  style="margin :90px 43%;"></mat-spinner>
+</div>
+
+<div class="row"  *ngIf="!found  && !isloading">
+  <br><br>
+  <div class="az row" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);text:center">
+                <span><h3 class="tealign text-center">No Course found</h3></span><br>
+  </div>
+  </div>
+
+  <div class="row" *ngIf="found && !isloading" >
+  <div *ngFor="let x of member">
+  <div class="col-md-3">
+<mat-card class="example-card"  style="width:250px;">
+
+  <a [routerLink]="['/coursedetails',x.courseId]" ><img mat-card-image src={{x.courseImagepath}}  style="width:250px;height:200px;" alt="Error"></a>
+<!--<div mat-card-avatar class="example-header-image"></div>-->
+   <a [routerLink]="['/coursedetails',x.courseId]" style="text-decoration:none;color:#000000"> <mat-card-subtitle class="text"><b>{{x.courseName}}</b></mat-card-subtitle></a>
+    <mat-card-subtitle>{{x.userName}}</mat-card-subtitle>
+ 
+  <mat-card-actions>
+    <button mat-button>&#x20B9;{{x.coursePrice}}</button>
+  </mat-card-actions>
+</mat-card>
+<br><br>
+  </div>
+</div>
+</div> 
+</div>
+</div>

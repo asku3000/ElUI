@@ -1,0 +1,29 @@
+<br>
+<br>
+<br>
+<br>
+<div *ngIf="userPercentage>=60">
+
+  <body class="A4 landscape">
+    <div id="cert" class="container text-center">
+      <div class=" col-md-12 col-sm-12 col-xs-12 col-lg-12">
+        <div id="CertificateTitle" class="img-responsive">Certificate of Completion</div>
+        <h1><span class="glyphicon glyphicon-certificate"></span></h1>
+        <span style="font-size:25px; display:inline"><i>This is to certify that</i></span><br>
+        <span style="font-size:30px"><b class="text-capitalize">{{userName}}</b></span><br>
+        <span style="font-size:25px"><i>has completed </i></span> <br/>
+        <span style="font-size:30px"><b>"{{userCertificateName}}"</b></span> <br/>
+        <span style="font-size:20px">with score of <b>{{userPercentage}}% on</b></span>
+        <span style="font-size:25px"><b> {{dateNow|date:"d MMMM y"}}.</b></span><br><br>
+        <span style="font-size:30px">Wishing best of luck for your bright future.</span>
+      </div>
+    </div>
+  </body>
+  <br>
+  <div class="container" id="homeButton">
+    <a class="btn btn-primary " role="button" (click)="navigateToProfile()">Go to your profile</a>
+  </div>
+</div>
+<br>
+<br>
+<br>

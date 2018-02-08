@@ -1,0 +1,140 @@
+.parallax1 {
+    /* The image used */
+    background-image: url('/assets/images/prose.jpg');
+    
+
+    /* Set a specific height */
+    min-height: 200px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.parallax2 {
+    /* The image used */
+    background-image: url('/assets/images/bus.JPG');
+    /*width:1920px;
+    margin-left: -230px;*/
+
+    /* Set a specific height */
+    min-height: 200px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/*button {
+  width: 200px;height: 70px;
+  color: #f1f;
+}*/
+  .aq{
+  color: rgb(255,255,255); 
+  
+}
+.az {
+    color: rgb(0,0,0);  
+    font-weight: 5;  
+}
+
+.boxed {
+ padding: 18px;
+  border: 8px solid;
+  background-color: rgb(245,245,245);
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  float: left;
+  /*background-color: #2196F3;*/
+  /*border: 20px solid rgba(0, 0, 0, 0.8);*/
+  /*padding: 10px;*/
+}
+.grid-item {
+  /*background-color: rgba(255, 255, 255, 0.8);*/
+  /*border: 20px solid rgba(0, 0, 0, 0.8);*/
+  /*padding: 18px;*/
+  font-size: 18px;
+  text-align: center;
+}
+.text {
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            padding: 5px;
+            text-overflow: ellipsis;
+            /*(...)*/
+        }
+.text:hover {
+         max-width: unset;
+            white-space: unset;
+            overflow: unset;
+            padding: unset;
+            text-overflow:unset;
+            /*(...)*/
+        }
+.headLine{
+    height:10px;
+    background: #1E88E5;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+
+body{
+    font-color:red;
+}
+
+.form-container {
+    display:block;
+    width:90%;
+    padding:2em;
+    margin: 2em auto;
+    background:#fff;
+}
+
+.alert {
+    background: #f2edda;
+    padding: 7px;
+    font-size: .9em;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: 2s alertAnim forwards;
+}
+
+.button {
+    margin-top: 3rem;
+}
+h1 {
+    margin-bottom: 2rem;
+    font-weight:bold;
+    font-family:'Muli';
+    font-size: 2em;
+}
+
+.boxes:hover{
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@keyframes alertAnim {
+    from {
+        opacity:0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity:1;
+        transform: translateY(0);
+    }
+}

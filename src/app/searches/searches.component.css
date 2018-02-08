@@ -1,0 +1,41 @@
+  .aq{
+  color: rgb(255,255,255); 
+  
+}
+.az {
+    font-weight: 5;  
+}
+
+.tealign {
+     text-align: center;
+}
+
+.boxed {
+ padding: 18px;
+  border: 8px solid;
+  background-color: rgb(245,245,245);
+}
+
+.padding-0{
+    padding-right:0;
+    padding-left:0;
+}
+.responsivefix{
+    position:unset;
+    width:96%;
+}
+@media(min-width: 1419px) {
+   .responsivefix {
+    width:unset;position:fixed;
+    }
+}
+
+.alert {
+    background: #f2edda;
+    padding: 7px;
+    font-size: .9em;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: 2s alertAnim forwards;
+
+}

@@ -1,0 +1,180 @@
+<br>
+<br>
+<br>
+<br>
+<div  style="background: white;position:fixed;z-index:9998;width:102%;padding-top:2%;">
+<!--<div row>-->
+<div class="col-sm-2 col-md-2 col-xs-2" ></div>
+<div class="col-sm-1 col-md-1 col-xs-1" >
+    <div  style="background:rose" *ngIf="!rForm.valid && !starter" style="position:fixed;z-index:9999">
+      <p class="text-center alert alert-danger">invalid characters</p>
+    </div>
+</div>
+        <div class="input-group col-md-6 col-sm-6 col-xs-6">
+           
+           <div id="custom-search-input">
+            <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+                <div class="input-group col-md-12 col-sm-12 col-xs-12">
+                        <input formControlName="description" type="text" name ="name" [(ngModel)]="name" (keyup)="ns()" class="  search-query form-control noclear" placeholder="Search" required/>
+                        <!--(keyup)="onNameKeyUp($event)"-->
+
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger" type="submit"  (click)="search()" [disabled]="!rForm.valid" [routerLink]="['/search']" >
+                                <span class=" glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+            </form>
+        </div>
+    </div>
+      <hr>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    
+<div class="row">
+    <div *ngIf="inlen==0">
+        <div class="col-sm-12 col-md-12 col-xs-12">
+            <h3 class="text-primary" style="text-align: center;">DEVELOPMENT</h3>
+            <div class="parallax1"></div>
+        </div>
+    </div>
+</div>
+<hr>
+
+<div *ngIf="found">
+    <div class="container" >
+        <div class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-xs-12">
+                    <div class="col-sm-1 col-md-12 col-xs-1"></div>
+                    <div class="col-sm-10 col-md-12 col-xs-10 col-md-offset-1">
+                    <div *ngFor="let x of member" style="padding: 4px;" class="col-sm-6 col-md-2 col-xs-12 "  >
+                        <a [routerLink]="['/coursedetails',x.courseEntity.courseId]"   *ngIf="x.rId<=5">
+                            <div class="boxes">
+
+                                <div class="imgcont" style="margin: 5px;">
+                                    <img src="{{x.courseEntity.courseImagepath}}" style="height:190px;margin-left: auto;margin-right: auto;" class="img-responsive" alt="error" />
+                                </div>
+                                <div class="caption">
+                                    <div class="row" style="margin: 5px;">
+                                        <div class="col-md-12 col-xs-12"  >
+                                            <h4 class="text-capitalize text">{{x.courseEntity.courseName}}</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin: 5px;">
+                                        <div class="col-md-6 col-xs-6">
+                                            <p class="small text-warning">{{x.courseEntity.courseProviderId.userName}}</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin: 5px;">
+                                    <div class="col-md-6 col-xs-6">
+                                        <h4>
+                                            <label style="text-color: blue;">&#x20B9;{{x.courseEntity.coursePrice}}</label>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                    <div class="col-sm-1 col-md-2 col-xs-1"></div>
+                    <br>
+                </div>
+            </div>
+     </div>
+    </div>
+</div>
+<!--<div class="az boxed container" *ngIf="!found">
+    <span style="text-align:center;">No Recommended Course found</span><br>
+</div>-->
+<div style="width:100%;">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-xs-12">
+            <h3 class="text-primary" style="text-align: center;">BUSINESS</h3>
+            <div class="parallax2">
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div *ngIf="found">
+    <div class="container" >
+        <div class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-xs-12">
+                        <div class="col-sm-1 col-md-12 col-xs-1"></div>
+                        <div class="col-sm-10 col-md-12 col-xs-10 col-md-offset-1">
+                            <div *ngFor="let x of member" >
+                                <a [routerLink]="['/coursedetails',x.courseEntity.courseId]" class="col-sm-6 col-md-2 col-xs-12 " style="padding: 4px;"*ngIf="x.rId>=6">
+                            <div class="boxes"  >
+
+                                <div class="imgcont" style="margin: 5px;">
+                                    <img src="{{x.courseEntity.courseImagepath}}" style="height:190px;margin-left: auto;margin-right: auto;" class="img-responsive" alt="${a.product_imgUrl}" />
+                                </div>
+                                <div class="caption">
+                                    <div class="row" style="margin: 5px;">
+                                        <div class="col-md-12 col-xs-12"  >
+                                            <h4 class="text-capitalize text">{{x.courseEntity.courseName}}</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin: 5px;">
+                                        <div class="col-md-6 col-xs-6">
+                                            <p class="small text-warning">{{x.courseEntity.courseProviderId.userName}}</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin: 5px;">
+                                    <div class="col-md-6 col-xs-6">
+                                        <h4>
+                                            <label style="text-color: blue;">&#x20B9;{{x.courseEntity.coursePrice}}</label>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                    <div class="col-sm-1 col-md-2 col-xs-1"></div>
+                    <br>
+                </div>
+            </div>
+     </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!--<div class="az boxed container" *ngIf="!found">
+    <span>No Course found</span><br>
+</div>-->
+<br>
+<div class="container" *ngIf="!found">
+      <div class="row">
+
+        <div class="animationload">
+          <div class="osahanloading"></div>
+        </div>
+</div>
+<!--<h2>POST</h2>
+<button (click)="postProfile()">Post Profile</button>-->

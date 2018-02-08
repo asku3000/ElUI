@@ -1,0 +1,145 @@
+<br>
+<br>
+<br>
+<br>
+<div id="singnUp" class="container">
+  <mat-card class="example-card">
+    <mat-card-content>
+      <div class="row">
+        <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 left-side" id="signUpImg">
+        </div>
+        <div class="col-md-6 col-xs-12 col-lg-6 col-sm-12 right-side" id="signUpForm">
+          <mat-card id="headerToolbar">
+            <div id="WelcomeMsg">
+              <h1>Welcome to Educentral</h1>
+            </div>
+          </mat-card><br>
+          <form [formGroup]="rForm" (ngSubmit)="submitForm()">
+            <div class="example-container">
+              <mat-form-field>
+                <input matInput placeholder="Enter your full name*" id="name" name="name" formControlName="name">
+                <mat-icon matSuffix><i class="material-icons">&#xE853;</i></mat-icon>
+                <mat-error *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched && rForm.controls['name'].errors.required">Full name is required</mat-error>
+                <mat-error *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched && rForm.controls['name'].errors.maxlength">Full name must be maximum 50 characters</mat-error>
+                <mat-error *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched && rForm.controls['name'].errors.pattern">Enter valid full name</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Enter your email address*" id="email" name="email" formControlName="email" maxlength=35 id="email" name="email">
+                <mat-icon matSuffix><i class="material-icons">&#xE0BE;</i></mat-icon>
+                <mat-error *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched && rForm.controls['email'].errors.maxlength">Email address must be maximum 35 characters</mat-error>
+                <mat-error *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched && rForm.controls['email'].errors.required">Email address is required</mat-error>
+                <mat-error *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched && rForm.controls['email'].errors.pattern">Enter valid email address</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <span matPrefix>+91 &nbsp;</span>
+                <input matInput placeholder="Enter your 10 digit mobile number*" id="phone" formControlName="phone" maxlength=10 id="phone" name="phone">
+                <mat-icon matSuffix><i class="material-icons">&#xE0B0;</i></mat-icon>
+                <mat-error *ngIf="!rForm.controls['phone'].valid && rForm.controls['phone'].touched && rForm.controls['phone'].errors.required">Mobile number is required</mat-error>
+                <mat-error *ngIf="!rForm.controls['phone'].valid && rForm.controls['phone'].touched && rForm.controls['phone'].errors.pattern">Enter valid mobile number</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Enter password*" [type]="phide ? 'password' : 'text'" formControlName="pass" id="pass" name="pass"
+                  autocomplete="off">
+                <mat-icon matSuffix (click)="phide = !phide">{{phide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                <mat-hint align="start">password must be of 8-16 characters</mat-hint>
+                <mat-error *ngIf="!rForm.controls['pass'].valid && rForm.controls['pass'].touched && rForm.controls['pass'].errors.required">Password is required</mat-error>
+                <mat-error *ngIf="!rForm.controls['pass'].valid && rForm.controls['pass'].touched && rForm.controls['pass'].errors.minlength">Password should be minimum 8 character long</mat-error>
+                <mat-error *ngIf="!rForm.controls['pass'].valid && rForm.controls['pass'].touched && rForm.controls['pass'].errors.maxlength">Password should be maximum 16 character long</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Confirm password*" [type]="cphide ? 'password' : 'text'" formControlName="confirmPass" id="confirmPass"
+                  name="confirmPass" autocomplete="off">
+                <mat-icon matSuffix (click)="cphide = !cphide">{{cphide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                <mat-error *ngIf="rForm.invalid && !rForm.controls['confirmPass'].valid && rForm.controls['confirmPass'].touched && rForm.controls['confirmPass'].errors.required">Password is required</mat-error>
+                <mat-error *ngIf="rForm.invalid && !rForm.controls['confirmPass'].valid && rForm.controls['confirmPass'].touched && rForm.controls['confirmPass'].errors.minlength">Password should be minimum 8 character long</mat-error>
+                <mat-error *ngIf="rForm.invalid && !rForm.controls['confirmPass'].valid && rForm.controls['confirmPass'].touched && rForm.controls['confirmPass'].errors.maxlength">Password should be maximum 16 character long</mat-error>
+              </mat-form-field>
+
+              <mat-error *ngIf="rForm.controls['confirmPass'].valid && rForm.invalid && rForm.errors?.passwordsShouldMatch">Password do not match</mat-error>
+
+              <mat-form-field>
+                <mat-select placeholder="Select Role*" id="role" name="name" formControlName="role">
+                  <mat-option value="user">User</mat-option>
+                  <mat-option value="provider">Provider</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!rForm.controls['role'].valid && rForm.controls['role'].touched && rForm.controls['role'].errors.required">Role is required</mat-error>
+              </mat-form-field>
+
+              <mat-form-field *ngIf="rForm.controls['role'].value==='provider'">
+                <input matInput placeholder="Enter your company url*" id="url" name="url" formControlName="url" autocomplete="off">
+                <mat-icon matSuffix><i class="material-icons">&#xE157;</i></mat-icon>
+                <mat-error *ngIf="!rForm.controls['url'].valid && rForm.controls['url'].touched && rForm.controls['url'].errors.required">Company url is required</mat-error>
+                <mat-error *ngIf="!rForm.controls['url'].valid && rForm.controls['url'].touched && rForm.controls['url'].errors.pattern">Enter valid company url</mat-error>
+              </mat-form-field>
+
+              <div id="submitBtn">
+                <button mat-raised-button color="primary" [disabled]="!rForm.valid" data-toggle="modal" data-target="#MSG">Sign Up</button>
+              </div>
+            </div>
+          </form>
+          <h4 style="text-align:center;">Or Sign Up with</h4>
+          <div class="row" id="socialSignUp">
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6 left-side">
+              <div id="customBtn" class="customGPlusSignIn" (click)="googleSignUp()" data-toggle="modal" data-target="#MSG">
+                <span class="icon"></span>
+                <span class="buttonText">Google</span>
+              </div>
+            </div>
+            <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 right-side">
+              <div id="fbLoginBtn" class="customFBSignIn" (click)="fbSignUp()" data-toggle="modal" data-target="#MSG">
+                <span class="icon" id="fblogo"></span>
+                <span class="buttonText" id="fbText">Facebook</span>
+              </div>
+            </div>
+            <br><br><br>
+            <div class="card" id="login">
+              <div id="logInMsg" class="col-md-12 col-sm-12 col-lg-12 col-xs-12 left-side">
+                <h4 id="h4">Already a member?</h4>
+                <button mat-button color="primary" (click)="navigateToLogin()"><h4 id="h4">Login Here</h4></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="modal fade" id="MSG" tabindex="-1" role="dialog" aria-labelledby="MSG" aria-hidden="false">
+  <div *ngIf="responseStatus==='pass'">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header modal-header-success">
+          <h1><span class="glyphicon glyphicon-thumbs-up"></span></h1>
+          <h1>Congratulations!!!</h1>
+        </div>
+        <div class="modal-body">
+          <h2>You have successfully Registered. </h2><br>
+        </div>
+        <div class="modal-footer">
+          <button mat-raised-button color="primary" (click)="navigateToHome()" data-dismiss="modal">Go to Home</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="responseStatus==='fail'">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header modal-header-danger">
+          <h1><span class="glyphicon glyphicon-exclamation-sign"></span> </h1>
+          <h1>Duplicate User!!!</h1>
+        </div>
+        <div class="modal-body">
+          <h2>Account already exists!!! Sign Up again</h2><br>
+        </div>
+        <div class="modal-footer">
+          <button mat-raised-button color="primary" (click)="navigateToSignUp()" data-dismiss="modal">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

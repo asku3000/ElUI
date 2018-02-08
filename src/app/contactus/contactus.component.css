@@ -1,0 +1,16 @@
+
+.container{
+    padding: 50px;
+}
+.glyphicon {
+    font-size: 70px;
+}
+.row{
+    margin: 80px;
+}
+
+.glyphicon:hover {
+    color: #d82020;
+    font-size: 72px
+
+}

@@ -1,0 +1,133 @@
+.headLine{
+    height:10px;
+    background: #1E88E5;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.myNavBar .navbar-brand {
+  height: 80px;
+}
+
+.myNavBar .nav >li >a {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.myNavBar .navbar-toggle {
+  padding: 10px;
+  margin: 25px 15px 25px 0;
+}
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}
+.navbar-alignit .navbar-header {
+	  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  height: 50px;
+}
+.navbar-alignit .navbar-brand {
+	top: 50%;
+	display: block;
+	position: relative;
+	height: auto;
+	transform: translate(0,-50%);
+	margin-right: 15px;
+  margin-left: 15px;
+}
+
+body{
+    font-color:red;
+}
+
+
+
+.navbar-nav>li>.dropdown-menu {
+	z-index: 9999;
+}
+
+.noclear::-ms-clear {
+    display: none;
+}
+
+@media only screen and (max-width: 1200px) {
+    .myNavBar .nav >li >a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    }
+
+    #welcome{
+     left: 5% !important;
+	right: auto !important;
+	text-align: left !important;
+	transform: translate(-30%, 0) !important;
+    }
+  .pad-left{
+      margin-left:25%;
+    }  
+    
+}
+
+@media only screen and (max-width: 770px) {
+       #welcome{
+     left: 25px !important;
+	right: auto !important;
+	text-align: left !important;
+	transform: translate(-30%, 0) !important;
+    }
+    .pad-left{
+      margin-left:25%;
+    }
+    }
+/*
+    @media only screen and (max-width: 766px) {
+       #welcome{
+         padding-left: 25px;
+     left: 25px !important;
+	right: auto !important;
+	text-align: left !important;
+	transform: translate(-30%, 0) !important;
+    }*/
+    /*.myNavBar .nav >li >a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    }*/
+    /*}*/
+
+    /*.pad-left{
+      padding-left:210px;
+    }*/
+ 
+    @media only screen and (max-width: 367px) {
+        .pad-left{
+      margin-left:25%;
+    }
+    }
+
+    @media only screen and (max-width: 360px) {
+        .pad-left{
+      padding-left:10%;
+    }
+    }
+     @media only screen and (max-width: 770px) {
+        .pad-left{
+      margin-left:25%;
+    }
+
+    }

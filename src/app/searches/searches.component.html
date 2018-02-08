@@ -1,0 +1,298 @@
+<br>
+<br>
+<br>
+<br>
+
+
+<div  style="background: white;position:fixed;z-index:9998;width:102%;padding-top:2%;">
+<div class="col-sm-2 col-md-2 col-xs-2" ></div>
+<div class="col-sm-1 col-md-1 col-xs-1" >
+    <div  style="background:rose" *ngIf="!rForm.valid && !isloading && !starter" style="position:fixed;z-index:9999">
+      <p class="text-center alert alert-danger">invalid characters</p>
+    </div>
+</div>
+
+    
+        <div class="input-group col-md-6 col-sm-6 col-xs-6" >
+     <div id="custom-search-input">
+            <form [formGroup]="rForm" (ngSubmit)="search()">
+                <div class="input-group col-md-12 col-sm-12 col-xs-12">
+                        <input formControlName="description" type="text" [(ngModel)]="searche" [value]="searche" (keyup)="ns()" class="search-query form-control noclear" required/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger" type="submit"   [disabled]="!rForm.valid" [routerLink]="['/search']" >
+                                <span class=" glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+            </form>
+        </div>
+        </div>
+    <hr>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container-fluid">
+    <div class="row">
+      <mat-spinner *ngIf="isloading" style="margin :90px 43%;"></mat-spinner>
+</div>
+</div>
+<div class="container-fluid" *ngIf="!isloading">
+    <div class="row">
+        <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12" style="margin-right:10px">
+            <div class="responsivefix" style="z-index:9998;background:white ">
+            <!-- FIlters-->
+                <div class="container-fluid" >
+                    <div class="row" style="margin-left:10px;">
+                    <div class="az container-fluid" style="">
+                        <div class="row">
+                        <div class="col-md-6 col-sm-9 col-xs-6">
+                        <h3>FILTERS </h3>
+                        </div>
+                        <div class="col-md-6 col-sm-3 col-xs-6">
+                        <br>
+                        <button class="btn btn-success" (click)="resets()">clear</button>
+                        </div>
+                        </div>
+                        <hr>
+                        <mat-accordion>
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Level
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <div id="Category"  >
+                                    <ul style="list-style: none; margin: 0;padding: 0;">
+                                        <li>
+                                            <input  type="checkbox" class="text-capitalize" [(ngModel)]="beginner" (change)="filters()" value="'beginner'" /> Beginner
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" class="text-capitalize" [(ngModel)]="intermediate" (change)="filters()" value="'Intermediate'" /> Intermediate
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" class="text-capitalize" [(ngModel)]="expert" (change)="filters()" value="'Expert'" /> Expert                              
+                                        </li>
+                                    </ul>
+                                </div>
+                              
+                            </mat-expansion-panel>
+                        
+                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Price
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <div class="container-fluid">
+                                                <div class="col-md-6 col-sm-6 col-xs-6" >
+                                                    <div >
+                                                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">From</button>
+                                                            <ul class="dropdown-menu" style="margin-left: 10px;" role="menu">
+                                                                <li>
+                                                                <input type="radio" name="pFrom" style="margin-left: 10px;" [(ngModel)]="pFrom" (change)="filters()" class="text-capitalize" id="pFrom" value="500" />&#x20B9;500
+                                                                </li>
+                                                                <li>
+                                                                    <input type="radio" name="pFrom" style="margin-left: 10px;" [(ngModel)]="pFrom" (change)="filters()" class="text-capitalize" id="pFrom"  value="1500" />&#x20B9;1500
+                                                                </li>
+                                                                <li>
+                                                                    <input type="radio" name="pFrom" style="margin-left: 10px;" [(ngModel)]="pFrom" (change)="filters()" class="text-capitalize" id="pFrom" value="3000" />&#x20B9;3000
+                                                                </li>
+                                                            </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-6"  >
+                                                    <div >
+                                                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">To</button>
+                                                            <ul class="dropdown-menu" style="margin-left: 10px;" role="menu">
+                                                                <li>
+                                                                    <input type="radio" style="margin-left: 10px;" class="text-capitalize" [(ngModel)]="pTo" (change)="filters()" id="pTo" name="pTo" value="1500" />&#x20B9;1500
+                                                                </li>
+                                                                <li>
+                                                                    <input type="radio"  style="margin-left: 10px;" class="text-capitalize" [(ngModel)]="pTo" (change)="filters()" id="pTo" name="pTo" value="3000" />&#x20B9;3000
+                                                                </li>
+                                                                <li>
+                                                                    <input type="radio"  style="margin-left: 10px;"  class="text-capitalize" [(ngModel)]="pTo" (change)="filters()" id="pTo" name="pTo" value="99999" />&#x20B9;3000+
+                                                                </li>
+
+                                                            </ul>
+                                                    </div>
+                                                </div>
+                                                </div>
+                            </mat-expansion-panel>
+
+                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Category
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                                    <ul style="list-style: none;margin: 0;padding: 0;">
+                                                        <li>
+                                                            <input  type="checkbox" class="text-capitalize" id="Category" [(ngModel)]="development" (change)="filters()" name="Category" value="'Development'" />Development
+                                                        </li>
+                                                        <li>
+                                                            <input type="checkbox" class="text-capitalize" id="Category" [(ngModel)]="business" (change)="filters()" name="Category" value="'Business'" />Business
+                                                        </li>
+                                                        <li>
+                                                            <input type="checkbox" class="text-capitalize" id="Category" [(ngModel)]="pD" (change)="filters()" name="Category" value="'Personal Development'" />Personal Development
+                                                        </li>
+                                                        <li>
+                                                            <input type="checkbox" class="text-capitalize" id="Category" [(ngModel)]="marketing" (change)="filters()" name="Category" value="'Marketing'" />Marketing
+                                                        </li>
+                                                    </ul>
+                            
+                                </mat-expansion-panel>
+                        
+                                <mat-expansion-panel (opened)="panelOpenState = true"
+                                                    (closed)="panelOpenState = false">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Lectures
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                            
+                                    <div id="Lectures" >
+                                                    <div class="container-fluid">
+                                                    <div class="col-md-6 col-sm-6 col-xs-6" >
+                                                        <div >
+                                                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">From</button>
+                                                                <ul class="dropdown-menu" style="margin-left: 10px;" role="menu">
+                                                                    <li>
+                                                                    <input type="radio" name="gender" style="margin-left: 10px;" class="text-capitalize" id="lFrom" [(ngModel)]="lFrom" (change)="filters()" name="lFrom" value="50" />25
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="radio" name="gender" style="margin-left: 10px;" class="text-capitalize" id="lFrom" [(ngModel)]="lFrom" (change)="filters()" name="lFrom" value="100" />50
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="radio" name="gender" style="margin-left: 10px;" class="text-capitalize" id="lFrom" [(ngModel)]="lFrom" (change)="filters()" name="lFrom" value="150" />150
+                                                                    </li>
+                                                                </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-6"  >
+                                                        <div >
+                                                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">To</button>
+                                                                <ul class="dropdown-menu" style="margin-left: 10px;" role="menu">
+                                                                    <li>
+                                                                        <input type="radio" style="margin-left: 10px;" class="text-capitalize" id="lTo" [(ngModel)]="lTo" (change)="filters()" name="lTo" value="100" />50
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="radio"  style="margin-left: 10px;" class="text-capitalize" id="lTo" [(ngModel)]="lTo" (change)="filters()" name="lTo" value="150" />100
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="radio"  style="margin-left: 10px;"  class="text-capitalize" id="lTo" [(ngModel)]="lTo" (change)="filters()" name="lTo" value="99999" />200+
+                                                                    </li>
+
+                                                                </ul>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                            </div>
+                                            
+                            
+                                    </mat-expansion-panel>
+<mat-expansion-panel (opened)="panelOpenState = true"
+                    (closed)="panelOpenState = false">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Sort
+                                        </mat-panel-title>
+                                        <mat-panel-description>
+                                         Price
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+                            
+                                      <div id="Category"  >
+                                    <ul style="list-style: none; margin: 0;padding: 0;">
+                                        <li>
+                                            <input type="radio" name="acsprice" class="text-capitalize" [(ngModel)]="hl" (change)="filters()" id="hl"  value="l" /> high to low
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="acsprice" class="text-capitalize" [(ngModel)]="hl" (change)="filters()" id="hl" value="h" /> low to high
+                                        </li>
+                                    </ul>
+                                </div>      
+                            
+                                    </mat-expansion-panel>
+
+                        </mat-accordion>
+                        <br>
+                        
+                    </div>
+                   </div> 
+                </div>
+            </div>
+            <!--Filters end-->
+            <br>
+            </div>              
+        <div class="col-md-9 col-md-9 col-sm-12 col-xs-12" style="margin-right:10px">
+            <div class="container-fluid">
+                <div class="az container-fluid" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" *ngIf="!found">
+                <span><h3 class="tealign text-center">No Course found</h3></span><br>
+            </div>
+            <div class="row" *ngIf="found">
+                <div *ngFor="let x of member">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-10">
+                                <div class="container">
+                                    <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" class="thumbnail">
+                                        <!--<div class="aq boxed">  -->
+                                        <div class="row" style="padding:7px 0px 0 0;">
+                                            <div class="col-xs-12 col-sm-12 col-md-3">
+                                                <a [routerLink]="['/coursedetails',x.courseId]" title="image" class="img-responsive imageCard"><img src={{x.courseImagepath}} alt="Error"  style="width:200px;height:200px;"/></a>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-7">
+                                                <h3><a [routerLink]="['/coursedetails',x.courseId]" >{{x.courseName}}</a></h3>
+                                                <p class="az" >{{x.courseDescription}}</p>
+                                                <div class="az col-xs-12 col-sm-12 col-md-12">
+                                                    <hr>
+                                                    <div class="col-sm-3 col-md-3 col-xs-3">
+                                                        <p class="glyphicon glyphicon-expand"> {{x.noOfLectures}} Lectures</p>
+                                                    </div>
+                                                    <div class="col-sm-3 col-md-3 col-xs-3">
+                                                        <p class="glyphicon glyphicon-time"> {{x.courseDuration}}</p>
+                                                    </div>
+                                                    <div class="col-sm-3 col-md-3 col-xs-3">
+                                                        <p class="glyphicon glyphicon-signal"> {{x.levelName}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-2">
+                                                <ul style="list-style: none;">
+                                                    <li>
+                                                        <div *ngIf="x.coursePrice!=0">
+                                                            <h4><span class="text-primary">&#x20B9;{{x.coursePrice}}</span></h4>
+                                                        </div>
+                                                        <div *ngIf="x.coursePrice==0">
+                                                            <h4><span class="text-primary">FREE</span></h4>
+                                                        </div>
+                                                    </li>
+                                                    <!--<li><i class="az glyphicon glyphicon-star-empty"></i> <span class="az">4.5</span></li>
+                                                    <li><i class="az glyphicon glyphicon-user"></i> <span class="az ">31,000</span></li>-->
+                                                    <br>
+                                                    <li>
+                                                        <h4><span class="az text-danger text-lg">{{x.userName}}</span></h4>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<br>

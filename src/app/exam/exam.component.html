@@ -1,0 +1,116 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+  <div class="container" *ngIf="questionLength == 0">
+    <div class="container" *ngIf="questions == null">
+      <img height="90" width="120" src="/assets/images/Loading_icon.gif">
+    </div>
+    <div class="container" *ngIf="questions != null">
+      <h2>Failed to load!!! Try Again!! </h2>
+    </div>
+  </div>
+  
+  <div *ngIf="questionLength != 0">
+    <form [formGroup]="rForm" (ngSubmit)="submitAnswer()">
+      <div class="panel panel-primary" id="main">
+        <div class="panel-heading">
+          <h2>{{getCertificateName()}}</h2>
+        </div>
+
+        <div *ngFor="let q of questions">
+          <div *ngIf="q.certificateId['ceritifcateId']===id">
+            <div class="row">
+              <div class="panel-body">
+                <div class="panel panel-default" id="#quesPanel">
+                  <div class="panel-heading" id="question">
+                    <h4>{{q.question}}</h4>
+                  </div>
+                  <div class="panel-body" id="options">
+                    <div class="funkyradio">
+                      <div class="funkyradio-primary">
+                        <input type="radio" name="{{(q.questionId)%10}}" id="{{q.questionId}}a" formControlName="{{(q.questionId)%10}}" value="a"
+                        />
+                        <label for="{{q.questionId}}a">{{q.a}}</label>
+                      </div>
+                      <div class="funkyradio-primary">
+                        <input type="radio" name="{{(q.questionId)%10}}" id="{{q.questionId}}b" formControlName="{{(q.questionId)%10}}" value="b"
+                        />
+                        <label for="{{q.questionId}}b"><span>{{q.b}}</span></label>
+                      </div>
+                      <div class="funkyradio-primary">
+                        <input type="radio" name="{{(q.questionId)%10}}" id="{{q.questionId}}c" formControlName="{{(q.questionId)%10}}" value="c"
+                        />
+                        <label for="{{q.questionId}}c"><span>{{q.c}}</span></label>
+                      </div>
+                      <div class="funkyradio-primary">
+                        <input type="radio" name="{{(q.questionId)%10}}" id="{{q.questionId}}d" formControlName="{{(q.questionId)%10}}" value="d"
+                        />
+                        <label for="{{q.questionId}}d"><span>{{q.d}}</span></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-footer">
+          <div class="checkbox checkbox-primary">
+            <input type="checkbox" formControlName="validate" id="validate" required>
+            <label for="validate"><b>I have completed the Test</b></label>
+          </div>
+          <input type="submit" class="btn btn-primary" [disabled]="!rForm.valid" value="Submit Test" data-toggle="modal" data-target="#Certificate"
+            data-backdrop="static" data-keyboard="false">
+        </div>
+        <div class="copyright bg-primary">
+          <h4>Test Powered By © 2018, Educentral, All rights reserved</h4>
+      </div>
+
+  </div>
+  </form>
+</div>
+
+</div>
+<br>
+<br>
+<br>
+
+<div class="modal fade" id="Certificate" tabindex="-1" role="dialog" aria-labelledby="Certificate" aria-hidden="false">
+  <div *ngIf="percentage>=60;else fail">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header modal-header-success">
+          <h1><span class="glyphicon glyphicon-thumbs-up"></span></h1>
+          <h1>Congratulations!!!</h1>
+        </div>
+        <div class="modal-body">
+          <h2>You have completed the test successfully.</h2><br>
+          <h3>You have secured {{percentage}} % of marks.</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="navigateToCertificate()" data-dismiss="modal">Get The Certificate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #fail>
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header modal-header-danger">
+          <h1><span class="glyphicon glyphicon-exclamation-sign"></span> </h1>
+          <h1>Better Luck Next Time</h1>
+        </div>
+        <div class="modal-body">
+          <h2>Thanks for taking the Exam.</h2><br>
+          <h3>You have secured {{percentage}} % of marks.</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="navigateToProfile()" data-dismiss="modal">Go to your profile</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

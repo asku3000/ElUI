@@ -1,0 +1,83 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { UserhomeComponent } from './userhome/userhome.component';
+import { UserRoutingModule } from "./user-routing.module";
+import { CdkTableModule } from "@angular/cdk/table";
+import {
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatStepperModule,
+} from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { DashboarduserserviceService } from "./dashboarduserservice.service";
+
+@NgModule({
+  imports: [
+    CommonModule,
+    UserRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatStepperModule,
+  ],
+  declarations: [UserhomeComponent],
+  providers:[DashboarduserserviceService]
+})
+export class DashboarduserModule { }

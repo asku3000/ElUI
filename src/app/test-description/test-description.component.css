@@ -1,0 +1,21 @@
+.container{
+    margin-top: 2%;
+    text-align: center;
+}
+h5{
+    font-weight: bold;
+    font-size: 150%;
+}
+#testInstruction{
+    font-size: 120%;
+}
+.btn{
+    font-size:130%;
+}
+p{
+    text-align: justify;
+    text-justify: inter-word;
+}
+.panel{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

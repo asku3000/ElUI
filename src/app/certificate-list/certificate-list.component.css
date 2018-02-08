@@ -1,0 +1,35 @@
+#top{
+    margin-top: 5%;
+    text-align: center;
+}
+.card,#url{
+    border:1px solid inherit;
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+p{
+    font-size: 18px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+h3{
+    display: inline;
+}
+#repeat{
+  margin-bottom: 20px;
+}
+#url{
+  text-align:center;
+  font-size:18px;
+  margin-bottom:10px;
+}
+a{
+   text-decoration: none;
+}
+.inactiveLink {
+   pointer-events: none;
+   cursor: default;
+}
+.thirdparty{
+    font-size:18px;
+}
